@@ -2,8 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-import Nav from './nav';
-
 const iconApple = require('../public/img/apple-touch-icon.png').default;
 const icon32 = require('../public/img/favicon-32x32.png').default;
 const icon16 = require('../public/img/favicon-16x16.png').default;
@@ -12,7 +10,7 @@ export default function Layout({ children }: React.PropsWithChildren<{}>) {
   return (
     <>
       <Head>
-        <title>Hacker News</title>
+        <title>SISTE</title>
         <meta
           name="description"
           content="A Hacker News clone built with React and Next.js. Hacker News is a social news website focusing on computer science and entrepreneurship."
@@ -30,52 +28,12 @@ export default function Layout({ children }: React.PropsWithChildren<{}>) {
           <h1>
             <Link href="/">
               <a title="Hacker News is a social news website focusing on computer science and entrepreneurship.">
-                Hacker News
+                SISTE
               </a>
             </Link>
           </h1>
         </header>
-        <Nav />
         <div id="main">{children}</div>
-        <footer>
-          <div>
-            Content &copy;
-            {` ${new Date().getFullYear()} `}
-            <a href="https://news.ycombinator.com/" rel="nofollow">
-              Hacker News
-            </a>{' '}
-            by{' '}
-            <a href="https://www.ycombinator.com/" rel="nofollow">
-              Y Combinator
-            </a>
-            .
-          </div>
-          <div>
-            Built with{' '}
-            <a href="https://reactjs.org/" rel="nofollow">
-              React
-            </a>
-            {' & '}
-            <a href="https://nextjs.org/" rel="nofollow">
-              Next.js
-            </a>{' '}
-            by <a href="https://isujay.com/">Sujay Thomas</a>.
-          </div>
-          <div>
-            Data via{' '}
-            <a href="https://github.com/HackerNews/API" rel="nofollow">
-              Official HN API
-            </a>
-            .
-          </div>
-          <div>
-            Source on{' '}
-            <a href="https://github.com/sujay/hacker-news" rel="nofollow">
-              GitHub
-            </a>
-            .
-          </div>
-        </footer>
       </div>
       <style jsx>
         {`
@@ -110,19 +68,7 @@ export default function Layout({ children }: React.PropsWithChildren<{}>) {
             color: #fff;
             text-decoration: none;
           }
-          footer {
-            font-size: 13px;
-            color: #bbb;
-            padding: 30px 0;
-            text-align: center;
-            line-height: 1.6em;
-          }
-          footer a {
-            color: #fff;
-          }
-          footer a:hover {
-            color: #fff;
-          }
+
           @media only screen and (max-width: 320px) {
             h1 {
               font-size: 40px;

@@ -2,6 +2,7 @@ import React from 'react';
 import useSWR, { SWRConfig } from 'swr';
 
 import { getList } from '../helpers/fetch';
+import Header from '../components/header';
 import ListDetail from '../components/list-detail';
 
 interface Props {
@@ -9,23 +10,23 @@ interface Props {
 }
 
 function Index() {
-  const { data: list, error } = useSWR('topstories', getList);
+  const { data: list, error } = useSWR('newstories', getList);
 
-  if (error) {
-    return (
-      <ul>
-        <li className="load">Error loading posts.</li>
-      </ul>
-    );
-  }
-  if (!list) {
-    return (
-      <ul>
-        <li className="load">Error loading posts.</li>
-      </ul>
-    );
-  }
-  return <ListDetail items={list.slice(0, 30)} url={false} />;
+  return (
+    <>
+      {error ? (
+        <ul>
+          <li className="load">Error loading posts.</li>
+        </ul>
+      ) : !list ? (
+        <ul>
+          <li className="load">Loading...</li>
+        </ul>
+      ) : (
+        <ListDetail items={list.slice(0, 30)} url={false} />
+      )}
+    </>
+  );
 }
 
 export default function Page({ fallback }: Props) {
@@ -37,11 +38,11 @@ export default function Page({ fallback }: Props) {
 }
 
 export async function getStaticProps() {
-  const list = await getList('topstories');
+  const list = await getList('newstories');
   return {
     props: {
       fallback: {
-        topstories: list,
+        newstories: list,
       },
     },
     revalidate: 60,
